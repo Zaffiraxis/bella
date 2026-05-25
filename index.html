@@ -159,7 +159,6 @@
 
   /* REVIEWS */
   #reviews{background:var(--cream);}
-  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .review-card{background:#fff;border-radius:var(--radius);padding:36px 32px;box-shadow:0 2px 20px rgba(31,26,22,0.07);position:relative;}
   .review-quote{font-family:var(--serif);font-size:60px;color:rgba(196,154,85,0.2);line-height:1;position:absolute;top:20px;left:28px;}
   .review-stars{display:flex;gap:4px;margin-bottom:20px;}
@@ -169,9 +168,19 @@
   .review-author{display:flex;align-items:center;gap:14px;}
   .review-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--beige),var(--cream));border:2px solid rgba(196,154,85,0.25);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--gray-brown);}
   .review-name{font-family:var(--serif);font-size:16px;font-weight:500;color:var(--brown);}
-  .reviews-dots{display:flex;gap:8px;justify-content:center;margin-top:40px;}
-  .reviews-dot{width:8px;height:8px;border-radius:50%;background:rgba(196,154,85,0.25);}
+  .reviews-nav{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:40px;}
+  .reviews-arrow{width:44px;height:44px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;transition:all 0.3s;}
+  .reviews-arrow:hover{background:var(--gold);border-color:var(--gold);}
+  .reviews-arrow:hover svg{stroke:#fff;}
+  .reviews-arrow svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;}
+  .reviews-dots{display:flex;gap:8px;align-items:center;}
+  .reviews-dot{width:8px;height:8px;border-radius:50%;background:rgba(196,154,85,0.25);cursor:pointer;transition:background 0.3s;border:none;padding:0;-webkit-appearance:none;appearance:none;display:block;flex-shrink:0;}
   .reviews-dot.active{background:var(--gold);}
+  .reviews-arrow:focus-visible,.reviews-dot:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .reviews-viewport{overflow:hidden;padding:14px 0;margin:-14px 0;}
+  .reviews-track{display:flex;gap:24px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;align-items:stretch;}
+  .reviews-track .review-card{flex-shrink:0;width:calc(50% - 12px);display:flex;flex-direction:column;}
+  .reviews-track .review-card .review-text{flex:1;}
 
   /* CONTACTS */
   #contacts{background:var(--ivory);}
@@ -236,7 +245,7 @@
     .header-inner{padding:0 32px;}
     nav{display:none;}
     .about-grid{grid-template-columns:1fr;gap:40px;}
-    .cases-grid,.reviews-grid{grid-template-columns:1fr;}
+    .cases-grid{grid-template-columns:1fr;}
     .footer-inner{padding:0 32px;}
     .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
     .contacts-card{padding:40px 32px;}
@@ -250,14 +259,10 @@
     .hero-buttons{flex-direction:column;}
     .btn-primary,.btn-secondary{width:100%;justify-content:center;}
     .about-stats{gap:24px;}
-    .reviews-page{grid-template-columns:1fr;}
+    .reviews-track{gap:0;}.reviews-track .review-card{width:100%;}
   }
   /* CONTACT VALUE NOTE */
   .contact-value-note{font-size:12px;color:var(--gold);margin-top:4px;font-style:italic;opacity:0.8;}
-  /* REVIEWS SLIDER */
-  .reviews-slider-wrap{overflow:hidden;}
-  .reviews-track{display:flex;transition:transform 0.5s ease;}
-  .reviews-page{min-width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   /* ABOUT SLIDER */
   .about-slider{position:relative;overflow:hidden;}
   .about-slides{width:100%;height:100%;position:relative;}
@@ -769,9 +774,9 @@
     <span class="section-label">ВІДГУКИ ПАЦІЄНТІВ</span>
     <h2 class="section-heading">Нам довіряють найцінніше</h2>
     <div class="reviews-slider-wrap" id="reviewsSlider">
-      <div class="reviews-track" id="reviewsTrack">
+      <div class="reviews-viewport">
+        <div class="reviews-track" id="reviewsTrack">
 
-        <div class="reviews-page reviews-grid">
           <div class="review-card">
             <div class="review-quote">"</div>
             <div class="review-stars">
@@ -819,9 +824,7 @@
               <div class="review-name">Пацієнт клініки</div>
             </div>
           </div>
-        </div>
 
-        <div class="reviews-page reviews-grid">
           <div class="review-card">
             <div class="review-quote">"</div>
             <div class="review-stars">
@@ -869,12 +872,13 @@
               <div class="review-name">Пацієнт клініки</div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
-      <div class="reviews-dots" id="reviewsDots">
-        <div class="reviews-dot active"></div>
-        <div class="reviews-dot"></div>
+      <div class="reviews-nav">
+        <button class="reviews-arrow" id="reviewsPrev" aria-label="Попередній"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="reviews-dots" id="reviewsDots"></div>
+        <button class="reviews-arrow" id="reviewsNext" aria-label="Наступний"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
     </div>
   </div>
@@ -1092,17 +1096,140 @@ document.querySelectorAll('button').forEach(b => {
   slider.addEventListener('mouseleave', startTimer);
 })();
 (function() {
-  const track = document.getElementById('reviewsTrack');
-  const dotsWrap = document.getElementById('reviewsDots');
-  if (!track || !dotsWrap) return;
-  const dots = dotsWrap.querySelectorAll('.reviews-dot');
-  let current = 0;
-  function goTo(index) {
-    track.style.transform = 'translateX(-' + (index * 100) + '%)';
-    dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
-    current = index;
+  var track = document.getElementById('reviewsTrack');
+  var dotsWrap = document.getElementById('reviewsDots');
+  var prevBtn = document.getElementById('reviewsPrev');
+  var nextBtn = document.getElementById('reviewsNext');
+  var wrap = document.getElementById('reviewsSlider');
+  if (!track) return;
+
+  var cards = track.querySelectorAll('.review-card');
+  var total = cards.length;
+  var current = 0;
+  var timer = null;
+  var perPage = 2;
+  var totalSlides = 0;
+  var stepPx = 0;
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var AUTOPLAY_MS = 4000;
+
+  function getPerPage() { return window.innerWidth <= 600 ? 1 : 2; }
+
+  function calcStep() {
+    if (!cards[0]) return 0;
+    var gap = perPage === 1 ? 0 : 24;
+    return cards[0].getBoundingClientRect().width + gap;
   }
-  dots.forEach(function(dot, i) { dot.addEventListener('click', function() { goTo(i); }); });
+
+  function buildDots() {
+    perPage = getPerPage();
+    totalSlides = total > 1 ? Math.ceil(total / perPage) : 1;
+    stepPx = calcStep();
+    dotsWrap.innerHTML = '';
+    var navEl = wrap.querySelector('.reviews-nav');
+    if (navEl) navEl.style.display = totalSlides <= 1 ? 'none' : '';
+    for (var i = 0; i < totalSlides; i++) {
+      (function(idx) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'reviews-dot' + (idx === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Слайд ' + (idx + 1));
+        dot.setAttribute('aria-current', idx === 0 ? 'true' : 'false');
+        dot.addEventListener('click', function() { goTo(idx); resetTimer(); });
+        dotsWrap.appendChild(dot);
+      })(i);
+    }
+    if (current >= totalSlides) current = 0;
+    applyTransform(false);
+    updateDots();
+  }
+
+  function applyTransform(animate) {
+    track.style.transition = animate === false
+      ? 'none'
+      : 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)';
+    track.style.transform = 'translateX(-' + (current * perPage * stepPx) + 'px)';
+  }
+
+  function goTo(index) {
+    if (totalSlides <= 1) return;
+    current = ((index % totalSlides) + totalSlides) % totalSlides;
+    applyTransform(true);
+    updateDots();
+  }
+
+  function updateDots() {
+    dotsWrap.querySelectorAll('.reviews-dot').forEach(function(d, i) {
+      var active = i === current;
+      d.classList.toggle('active', active);
+      d.setAttribute('aria-current', active ? 'true' : 'false');
+    });
+  }
+
+  function startTimer() {
+    if (totalSlides <= 1) return;
+    clearInterval(timer);
+    timer = setInterval(function() { goTo(current + 1); }, AUTOPLAY_MS);
+  }
+  function stopTimer() { clearInterval(timer); timer = null; }
+  function resetTimer() { stopTimer(); startTimer(); }
+
+  /* pause when tab hidden, resume when visible */
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) stopTimer(); else startTimer();
+  });
+
+  /* pause on hover, resume on leave (only if tab active) */
+  wrap.addEventListener('mouseenter', stopTimer);
+  wrap.addEventListener('mouseleave', function() {
+    if (!document.hidden) startTimer();
+  });
+
+  /* arrow buttons */
+  prevBtn.addEventListener('click', function() { goTo(current - 1); resetTimer(); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); resetTimer(); });
+
+  /* keyboard navigation (arrow keys work when any child is focused) */
+  wrap.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') { goTo(current - 1); resetTimer(); e.preventDefault(); }
+    else if (e.key === 'ArrowRight') { goTo(current + 1); resetTimer(); e.preventDefault(); }
+  });
+
+  /* touch swipe */
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    stopTimer();
+  }, { passive: true });
+
+  track.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      goTo(dx < 0 ? current + 1 : current - 1);
+    }
+    resetTimer();
+  }, { passive: true });
+
+  /* resize: recalculate step without forcing layout on each frame */
+  var resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      var newPer = getPerPage();
+      if (newPer !== perPage) {
+        current = 0;
+        buildDots();
+      } else {
+        stepPx = calcStep();
+        applyTransform(false);
+      }
+    }, 150);
+  });
+
+  buildDots();
+  startTimer();
 })();
 </script>
 </body>
