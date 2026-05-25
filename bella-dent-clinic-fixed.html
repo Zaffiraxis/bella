@@ -256,9 +256,9 @@
   /* REVIEWS SLIDER */
   .reviews-slider-wrap{overflow:hidden;}
   #reviews .container{overflow:hidden;padding-left:0;padding-right:0;}
-  @media(max-width:768px){
+  @media(max-width:1024px){
     #reviews .container{overflow:hidden;padding:0;}
-    .reviews-grid{width:100%;}
+    .reviews-grid{width:100%;flex-wrap:nowrap;}
     .review-card{flex:0 0 100%;min-width:100%;padding:32px 24px;box-sizing:border-box;}
   }
   /* ABOUT SLIDER */
@@ -1100,7 +1100,7 @@ document.querySelectorAll('button').forEach(b => {
   let current = 0;
   let autoplay;
 
-  function isMobile() { return window.innerWidth <= 768; }
+  function isMobile() { return window.innerWidth <= 1024; }
   function total() { return isMobile() ? 6 : 2; }
   function visibleCount() { return isMobile() ? 1 : 3; }
 
