@@ -95,22 +95,21 @@
 
   /* CERTIFICATES */
   #certificates{background:var(--ivory);}
-  .cert-row{display:flex;gap:20px;justify-content:center;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;}
-  .cert-card{flex:0 0 180px;background:#fff;border:1px solid rgba(196,154,85,0.35);border-radius:8px;padding:24px 16px;text-align:center;box-shadow:0 2px 16px rgba(31,26,22,0.05);}
-  .cert-title-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px;}
-  .cert-body{font-family:var(--serif);font-size:13px;color:var(--gray-brown);line-height:1.5;margin-bottom:16px;}
-  .cert-seal{width:36px;height:36px;border:2px solid var(--gold);border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;}
-  .cert-seal svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.5;}
-  .cert-line{width:60px;height:1px;background:rgba(196,154,85,0.4);margin:12px auto;}
-  .cert-sig{font-family:var(--serif);font-size:13px;font-style:italic;color:rgba(111,98,88,0.5);}
+  .cert-slider-viewport{overflow:hidden;}
+  .cert-track{display:flex;gap:20px;align-items:stretch;will-change:transform;}
+  .cert-card-slide{flex-shrink:0;background:#fff;border:1px solid rgba(196,154,85,0.35);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 16px rgba(31,26,22,0.08);display:flex;flex-direction:column;}
+  .cert-img-wrap{height:280px;display:flex;align-items:center;justify-content:center;padding:20px;background:#fdfaf6;}
+  .cert-img-wrap img{width:100%;height:100%;object-fit:contain;display:block;}
   .cert-nav{display:flex;align-items:center;gap:24px;justify-content:center;margin-top:32px;}
-  .cert-arrow{width:40px;height:40px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;transition:all 0.3s;}
+  .cert-arrow{width:44px;height:44px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;transition:all 0.3s;flex-shrink:0;}
   .cert-arrow:hover{background:var(--gold);border-color:var(--gold);}
   .cert-arrow:hover svg{stroke:#fff;}
   .cert-arrow svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;}
-  .cert-dots{display:flex;gap:8px;}
-  .cert-dot{width:8px;height:8px;border-radius:50%;background:rgba(196,154,85,0.25);}
+  .cert-dots{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;max-width:calc(100% - 136px);}
+  .cert-dot{width:8px;height:8px;border-radius:50%;background:rgba(196,154,85,0.25);cursor:pointer;border:none;padding:0;flex-shrink:0;transition:background 0.3s;-webkit-appearance:none;appearance:none;}
   .cert-dot.active{background:var(--gold);}
+  .cert-arrow:focus-visible,.cert-dot:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  @media(max-width:600px){.cert-img-wrap{height:220px;}}
 
   /* DOCTORS */
   #doctors{background:var(--cream);}
@@ -486,63 +485,13 @@
   <div class="container">
     <span class="section-label">СЕРТИФІКАТИ ТА ДИПЛОМИ</span>
     <h2 class="section-heading">Наші сертифікати</h2>
-    <div class="cert-row">
-      <div class="cert-card">
-        <div class="cert-title-type">СЕРТИФІКАТ</div>
-        <div class="cert-seal">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <p class="cert-body">Сучасні методики естетичної стоматології</p>
-        <div class="cert-line"></div>
-        <div class="cert-sig">підписано</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-title-type">СЕРТИФІКАТ</div>
-        <div class="cert-seal">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <p class="cert-body">Імплантологія від А до Я</p>
-        <div class="cert-line"></div>
-        <div class="cert-sig">підписано</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-title-type">ДИПЛОМ</div>
-        <div class="cert-seal">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <p class="cert-body">Лікар-стоматолог</p>
-        <div class="cert-line"></div>
-        <div class="cert-sig">підписано</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-title-type">СЕРТИФІКАТ</div>
-        <div class="cert-seal">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <p class="cert-body">Ортодонтія та сучасні технології</p>
-        <div class="cert-line"></div>
-        <div class="cert-sig">підписано</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-title-type">СЕРТИФІКАТ</div>
-        <div class="cert-seal">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
-        </div>
-        <p class="cert-body">Естетична реставрація зубів</p>
-        <div class="cert-line"></div>
-        <div class="cert-sig">підписано</div>
-      </div>
+    <div class="cert-slider-viewport" id="certViewport">
+      <div class="cert-track" id="certTrack"></div>
     </div>
     <div class="cert-nav">
-      <button class="cert-arrow"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <div class="cert-dots">
-        <div class="cert-dot active"></div>
-        <div class="cert-dot"></div>
-        <div class="cert-dot"></div>
-        <div class="cert-dot"></div>
-        <div class="cert-dot"></div>
-      </div>
-      <button class="cert-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      <button class="cert-arrow" id="certPrev" aria-label="Попередній"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="cert-dots" id="certDots"></div>
+      <button class="cert-arrow" id="certNext" aria-label="Наступний"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </div>
 </section>
@@ -1182,6 +1131,188 @@ document.querySelectorAll('button').forEach(b => {
   });
 
   buildDots();
+  startTimer();
+})();
+
+// === CERTIFICATES SLIDER ===
+(function() {
+  // Реальні сертифікати з папки серфетикаты/
+  // Щоб додати нові — покладіть файли у папку certificates/
+  // та додайте шляхи до масиву нижче
+  var certImages = [
+    'серфетикаты/Untitled image.png',
+    'серфетикаты/Untitled image (1).png',
+    'серфетикаты/Untitled image (2).png',
+    'серфетикаты/Untitled image (3).png',
+    'серфетикаты/Untitled image (4).png',
+    'серфетикаты/Untitled image (5).png',
+    'серфетикаты/Untitled image (6).png',
+    'серфетикаты/Untitled image (7).png',
+    'серфетикаты/Untitled image (8).png',
+    'серфетикаты/Untitled image (9).png',
+    'серфетикаты/Untitled image (10).png',
+    'серфетикаты/Untitled image (11).png',
+    'серфетикаты/Untitled image (12).png',
+    'серфетикаты/Untitled image (13).png',
+    'серфетикаты/Untitled image (14).png'
+  ];
+
+  var track    = document.getElementById('certTrack');
+  var viewport = document.getElementById('certViewport');
+  var dotsWrap = document.getElementById('certDots');
+  var prevBtn  = document.getElementById('certPrev');
+  var nextBtn  = document.getElementById('certNext');
+  if (!track) return;
+
+  var GAP = 20;
+  var n = certImages.length;
+  var current = 0;
+  var timer = null;
+  var busy = false;
+
+  function getVis() {
+    var w = window.innerWidth;
+    return w <= 640 ? 1 : w <= 1024 ? 2 : 3;
+  }
+
+  function getCardW(vis) {
+    return (viewport.offsetWidth - GAP * (vis - 1)) / vis;
+  }
+
+  function makeSlide(src) {
+    var card = document.createElement('div');
+    card.className = 'cert-card-slide';
+    card.setAttribute('aria-hidden', 'true');
+    var wrap = document.createElement('div');
+    wrap.className = 'cert-img-wrap';
+    var img = document.createElement('img');
+    img.setAttribute('loading', 'lazy');
+    img.setAttribute('decoding', 'async');
+    img.setAttribute('alt', 'Сертифікат');
+    img.src = src;
+    wrap.appendChild(img);
+    card.appendChild(wrap);
+    return card;
+  }
+
+  function rebuildSizes() {
+    var vis = getVis();
+    var cw = getCardW(vis);
+    var all = track.querySelectorAll('.cert-card-slide');
+    all.forEach(function(s) { s.style.width = cw + 'px'; });
+    track.style.gap = GAP + 'px';
+  }
+
+  function applyOffset(idx, animate) {
+    var vis = getVis();
+    var cw = getCardW(vis);
+    var off = (vis + idx) * (cw + GAP);
+    track.style.transition = animate ? 'transform .5s cubic-bezier(.25,.46,.45,.94)' : 'none';
+    track.style.transform = 'translateX(-' + off + 'px)';
+  }
+
+  function buildTrack() {
+    var vis = getVis();
+    track.innerHTML = '';
+    // Clones at start: last vis real slides
+    for (var i = n - vis; i < n; i++) { track.appendChild(makeSlide(certImages[i])); }
+    // Real slides
+    for (var i = 0; i < n; i++) { track.appendChild(makeSlide(certImages[i])); }
+    // Clones at end: first vis real slides
+    for (var i = 0; i < vis; i++) { track.appendChild(makeSlide(certImages[i])); }
+    rebuildSizes();
+    applyOffset(current, false);
+    buildDots();
+  }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    for (var i = 0; i < n; i++) {
+      (function(idx) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cert-dot' + (idx === current ? ' active' : '');
+        btn.setAttribute('aria-label', 'Сертифікат ' + (idx + 1));
+        btn.addEventListener('click', function() {
+          if (busy) return;
+          stopTimer();
+          goTo(idx);
+          startTimer();
+        });
+        dotsWrap.appendChild(btn);
+      })(i);
+    }
+  }
+
+  function updateDots() {
+    dotsWrap.querySelectorAll('.cert-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(idx) {
+    if (busy) return;
+    busy = true;
+    current = ((idx % n) + n) % n;
+    applyOffset(current, true);
+    updateDots();
+    setTimeout(function() { busy = false; }, 520);
+  }
+
+  function step(dir) {
+    if (busy) return;
+    busy = true;
+    var vis = getVis();
+    var cw = getCardW(vis);
+    // Animate through clone region if at boundary
+    var trackIdx = vis + current + dir;
+    var off = trackIdx * (cw + GAP);
+    track.style.transition = 'transform .5s cubic-bezier(.25,.46,.45,.94)';
+    track.style.transform = 'translateX(-' + off + 'px)';
+    current = ((current + dir) % n + n) % n;
+    updateDots();
+    setTimeout(function() {
+      // Snap to real position (no-op when not at boundary)
+      applyOffset(current, false);
+      setTimeout(function() { busy = false; }, 30);
+    }, 520);
+  }
+
+  function startTimer() {
+    stopTimer();
+    timer = setInterval(function() { step(1); }, 4000);
+  }
+  function stopTimer() { clearInterval(timer); timer = null; }
+
+  prevBtn.addEventListener('click', function() { stopTimer(); step(-1); startTimer(); });
+  nextBtn.addEventListener('click', function() { stopTimer(); step(1);  startTimer(); });
+
+  // Touch / swipe
+  var tx = 0, ty = 0;
+  viewport.addEventListener('touchstart', function(e) {
+    tx = e.touches[0].clientX;
+    ty = e.touches[0].clientY;
+    stopTimer();
+  }, { passive: true });
+  viewport.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      dx < 0 ? step(1) : step(-1);
+    }
+    startTimer();
+  }, { passive: true });
+
+  viewport.addEventListener('mouseenter', stopTimer);
+  viewport.addEventListener('mouseleave', startTimer);
+
+  var resizeT;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(buildTrack, 150);
+  });
+
+  buildTrack();
   startTimer();
 })();
 </script>
