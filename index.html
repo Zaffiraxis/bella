@@ -207,29 +207,37 @@
   .map-iframe{width:100%;height:100%;border:0;display:block;}
 
   /* FOOTER */
-  footer{background:#15100B;padding:52px 0 0;border-top:1px solid rgba(196,154,85,.35);}
+  footer{background:#15100B;padding:36px 0 0;border-top:1px solid rgba(196,154,85,.35);}
   .footer-inner{max-width:1440px;margin:0 auto;padding:0 80px;}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid rgba(196,154,85,.12);}
-  .footer-desc{font-size:12px;color:rgba(251,247,241,.38);line-height:1.65;margin:0 0 16px;font-weight:300;}
-  .footer-social{display:flex;gap:8px;}
-  .footer-social-icon{width:30px;height:30px;border:1px solid rgba(196,154,85,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;}
+  .footer-top{display:flex;gap:44px;padding-bottom:26px;border-bottom:1px solid rgba(196,154,85,.1);align-items:flex-start;}
+  .footer-brand-block{flex:0 0 230px;}
+  .footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px;}
+  .footer-brand-mark{height:34px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;}
+  .footer-brand-copy{display:flex;flex-direction:column;line-height:1.1;}
+  .footer-brand-name{font-family:var(--serif);font-size:14px;letter-spacing:2.5px;font-weight:500;color:rgba(251,247,241,.85);text-transform:uppercase;}
+  .footer-brand-tagline{font-family:var(--sans);font-size:7.5px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-top:3px;}
+  .footer-nav-cols{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .footer-desc{font-size:11.5px;color:rgba(251,247,241,.38);line-height:1.6;margin:0 0 10px;font-weight:300;}
+  .footer-social{display:flex;gap:7px;}
+  .footer-social-icon{width:28px;height:28px;border:1px solid rgba(196,154,85,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;}
   .footer-social-icon:hover{border-color:var(--gold);background:rgba(196,154,85,.1);}
-  .footer-social-icon svg{width:13px;height:13px;stroke:rgba(196,154,85,.7);fill:none;stroke-width:1.5;}
-  .footer-col-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:14px;}
-  .footer-links{list-style:none;display:flex;flex-direction:column;gap:7px;}
-  .footer-links a{text-decoration:none;font-size:12px;color:rgba(251,247,241,.4);transition:color .3s;font-weight:300;}
+  .footer-social-icon svg{width:12px;height:12px;stroke:rgba(196,154,85,.7);fill:none;stroke-width:1.5;}
+  .footer-col-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .footer-links a{text-decoration:none;font-size:11.5px;color:rgba(251,247,241,.4);transition:color .3s;font-weight:300;}
   .footer-links a:hover{color:rgba(251,247,241,.75);}
-  .footer-cta-text{font-size:12px;color:rgba(251,247,241,.38);line-height:1.65;margin-bottom:16px;font-weight:300;}
-  .footer-cta-btn{display:block;border:1px solid rgba(196,154,85,.55);color:var(--gold);font-family:var(--sans);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;padding:11px 20px;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;}
+  .footer-cta-section{text-align:center;padding:20px 0;border-bottom:1px solid rgba(196,154,85,.08);}
+  .footer-cta-text{font-size:12.5px;color:rgba(251,247,241,.45);line-height:1.65;margin:0 auto 14px;font-weight:300;max-width:400px;}
+  .footer-cta-btn{display:inline-block;border:1px solid rgba(196,154,85,.55);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;padding:11px 28px;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;}
   .footer-cta-btn:hover{background:var(--gold);color:var(--brown);}
-  .footer-bottom{padding:18px 0;display:flex;justify-content:center;}
+  .footer-bottom{padding:11px 0;display:flex;justify-content:center;}
   .footer-copy{font-size:10px;color:rgba(251,247,241,.18);letter-spacing:1px;}
 
   /* RESPONSIVE */
   @media(max-width:1200px){
     .services-grid{grid-template-columns:repeat(3,1fr);}
     .doctors-grid{grid-template-columns:repeat(3,1fr);}
-    .footer-grid{grid-template-columns:1fr 1fr;}
+    .footer-brand-block{flex:0 0 210px;}
   }
   @media(max-width:900px){
     .doctors-grid{grid-template-columns:repeat(2,1fr);}
@@ -245,7 +253,8 @@
     .about-grid{grid-template-columns:1fr;gap:40px;}
     .cases-grid{grid-template-columns:1fr;}
     .footer-inner{padding:0 32px;}
-    .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+    .footer-top{gap:22px;}
+    .footer-brand-block{flex:0 0 190px;}
     .contacts-card{padding:40px 32px;}
   }
   @media(max-width:600px){
@@ -259,7 +268,9 @@
     .services-grid{grid-template-columns:1fr;}
     .doctors-grid{grid-template-columns:1fr;}
     .footer-inner{padding:0 20px;}
-    .footer-grid{grid-template-columns:1fr 1fr;gap:16px;}
+    .footer-top{flex-direction:column;gap:0;}
+    .footer-brand-block{flex:none;width:100%;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(196,154,85,.08);}
+    .footer-nav-cols{width:100%;gap:12px;}
     .hero-title{font-size:52px;}
     section{padding:64px 0;}
     .hero-buttons{flex-direction:column;}
@@ -292,12 +303,12 @@
   .header-actions{display:flex;align-items:center;gap:10px;}
 
   /* ─── HAMBURGER ─── */
-  .hamburger{background:transparent;border:1px solid rgba(176,138,74,0.35);width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;border-radius:1px;flex-shrink:0;transition:border-color .3s,background .3s;padding:0;}
-  .hamburger:hover,.hamburger:focus{border-color:rgba(176,138,74,0.8);background:rgba(176,138,74,.07);outline:none;}
-  .hamburger span{display:block;width:18px;height:1px;background:#2A1A12;transition:transform .3s,opacity .3s;}
-  .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .hamburger{background:none;border:none;width:36px;height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0;padding:4px;transition:opacity .3s;}
+  .hamburger:hover,.hamburger:focus{opacity:.5;outline:none;}
+  .hamburger span{display:block;width:20px;height:1.5px;background:#2A1A12;border-radius:1px;transition:transform .3s,opacity .3s;}
+  .hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
   .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0);}
-  .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+  .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
 
   /* ─── MENU PANEL ─── */
   .menu-overlay{position:fixed;inset:0;background:rgba(31,26,22,.6);z-index:150;opacity:0;pointer-events:none;transition:opacity .35s;}
@@ -316,14 +327,6 @@
   .menu-nav-links li:last-child a{border-bottom:none;}
   .menu-nav-links a:hover{color:var(--gold);}
 
-  /* ─── FOOTER BRAND ─── */
-  .footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:14px;}
-  .footer-brand-mark{height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;}
-  .footer-brand-copy{display:flex;flex-direction:column;line-height:1.1;}
-  .footer-brand-name{font-family:var(--serif);font-size:15px;letter-spacing:2.5px;font-weight:500;color:rgba(251,247,241,.85);text-transform:uppercase;}
-  .footer-brand-tagline{font-family:var(--sans);font-size:8px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-top:4px;}
-
-  @media(max-width:600px){.hamburger{width:40px;height:40px;}}
 </style>
 </head>
 <body>
@@ -891,8 +894,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
+    <div class="footer-top">
+      <div class="footer-brand-block">
         <a href="#home" class="footer-brand">
           <img class="footer-brand-mark" src="images/bella-dent-mark.png.png" alt="Bella Dent Clinic">
           <div class="footer-brand-copy">
@@ -908,30 +911,32 @@
           <div class="footer-social-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></div>
         </div>
       </div>
-      <div>
-        <div class="footer-col-title">НАВІГАЦІЯ</div>
-        <ul class="footer-links">
-          <li><a href="#home">Головна</a></li>
-          <li><a href="#services">Послуги</a></li>
-          <li><a href="#doctors">Лікарі</a></li>
-          <li><a href="price.html">Прайс</a></li>
-          <li><a href="#contacts">Контакти</a></li>
-        </ul>
+      <div class="footer-nav-cols">
+        <div>
+          <div class="footer-col-title">НАВІГАЦІЯ</div>
+          <ul class="footer-links">
+            <li><a href="#home">Головна</a></li>
+            <li><a href="#services">Послуги</a></li>
+            <li><a href="#doctors">Лікарі</a></li>
+            <li><a href="price.html">Прайс</a></li>
+            <li><a href="#contacts">Контакти</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">ПОСЛУГИ / ЦІНИ</div>
+          <ul class="footer-links">
+            <li><a href="price.html#terapiia">Терапевтична стоматологія</a></li>
+            <li><a href="price.html#khirurhiia">Хірургія</a></li>
+            <li><a href="price.html#ortopediia">Ортопедія</a></li>
+            <li><a href="price.html#ortodontiia">Ортодонтія</a></li>
+            <li><a href="price.html#implantolohiia">Імплантологія</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <div class="footer-col-title">ПОСЛУГИ / ЦІНИ</div>
-        <ul class="footer-links">
-          <li><a href="price.html#terapiia">Терапевтична стоматологія</a></li>
-          <li><a href="price.html#khirurhiia">Хірургія</a></li>
-          <li><a href="price.html#ortopediia">Ортопедія</a></li>
-          <li><a href="price.html#ortodontiia">Ортодонтія</a></li>
-          <li><a href="price.html#implantolohiia">Імплантологія</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer-cta-text">Запишіться на консультацію та отримайте турботу, яку ви заслуговуєте.</p>
-        <a href="#contacts" class="footer-cta-btn">ЗАПИСАТИСЯ НА ПРИЙОМ</a>
-      </div>
+    </div>
+    <div class="footer-cta-section">
+      <p class="footer-cta-text">Запишіться на консультацію та отримайте турботу, яку ви заслуговуєте.</p>
+      <a href="#contacts" class="footer-cta-btn">ЗАПИСАТИСЯ НА ПРИЙОМ</a>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2024 Bella Dent Clinic. Усі права захищені.</span>
