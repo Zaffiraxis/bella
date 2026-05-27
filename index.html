@@ -33,6 +33,11 @@
   .logo-img{height:74px;width:auto;max-width:320px;object-fit:contain;display:block;}
   .btn-header{background:transparent;border:1px solid #B08A4A;color:#2A1A12;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;padding:14px 28px;cursor:pointer;border-radius:1px;transition:background 0.3s,color 0.3s,border-color 0.3s;white-space:nowrap;flex-shrink:0;}
   .btn-header:hover{background:#B08A4A;color:#fff;border-color:#B08A4A;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+  .brand-mark{height:64px;width:auto;object-fit:contain;display:block;}
+  .brand-copy{display:flex;flex-direction:column;line-height:1.05;}
+  .brand-name{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:3px;font-weight:500;color:#3A2D24;text-transform:uppercase;margin-bottom:1px;}
+  .brand-subtitle{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:2.5px;color:#7A6252;text-transform:uppercase;}
 
   /* HERO */
   #home{position:relative;height:100vh;min-height:700px;background:#1a1108;}
@@ -229,6 +234,9 @@
     .container{padding:0 32px;}
     .header-inner{padding:0 32px;height:78px;}
     .logo-img{height:68px;max-width:45vw;}
+    .brand-mark{height:56px;}
+    .brand-name{font-size:17px;}
+    .brand-subtitle{font-size:8.5px;}
     .btn-header{padding:13px 24px;font-size:10px;letter-spacing:2.5px;}
     .about-grid{grid-template-columns:1fr;gap:40px;}
     .cases-grid{grid-template-columns:1fr;}
@@ -239,7 +247,11 @@
   @media(max-width:600px){
     .header-inner{padding:0 20px;height:74px;}
     .logo-img{height:62px;max-width:44vw;}
-    .btn-header{padding:12px 20px;font-size:10px;letter-spacing:2.5px;}
+    .brand-mark{height:48px;}
+    .brand{gap:9px;}
+    .brand-name{font-size:14px;letter-spacing:2.5px;}
+    .brand-subtitle{font-size:7.5px;letter-spacing:2px;}
+    .btn-header{padding:10px 18px;font-size:10px;letter-spacing:2px;}
     .services-grid{grid-template-columns:1fr;}
     .doctors-grid{grid-template-columns:1fr 1fr;}
     .footer-grid{grid-template-columns:1fr;}
@@ -268,8 +280,14 @@
 <!-- HEADER -->
 <header id="site-header">
   <div class="header-inner">
-    <a href="#home" class="logo">
-      <img src="bella-dent-logo.png.png" alt="Bella Dent Clinic" class="logo-img">
+    <a class="brand" href="#home">
+      <img class="brand-mark" src="images/bella-dent-mark.png.png" alt="Bella Dent Clinic">
+      <div class="brand-copy">
+        <div class="brand-name">BELLA DENT</div>
+        <div class="brand-name">CLINIC</div>
+        <div class="brand-subtitle">ЦЕНТР СУЧАСНОЇ</div>
+        <div class="brand-subtitle">СТОМАТОЛОГІЇ</div>
+      </div>
     </a>
     <button class="btn-header">ЗАПИСАТИСЯ</button>
   </div>
