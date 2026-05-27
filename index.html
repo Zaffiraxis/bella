@@ -119,19 +119,20 @@
   /* DOCTORS */
   #doctors{background:var(--cream);}
   .doctors-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
-  .doctor-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);transition:all 0.3s;}
+  .doctor-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);transition:all 0.3s;display:flex;flex-direction:column;}
   .doctor-card:hover{transform:translateY(-4px);box-shadow:0 10px 40px rgba(31,26,22,0.13);}
-  .doctor-photo{height:260px;background:linear-gradient(165deg,#efe4d6 0%,#e0d0bb 100%);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;}
-  .doctor-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(31,26,22,0.08) 100%);}
-  .doctor-avatar{width:120px;height:180px;display:flex;align-items:center;justify-content:center;}
-  .doctor-info{padding:20px 18px 18px;}
-  .doctor-info-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
-  .doctor-name{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--brown);line-height:1.2;margin-bottom:4px;}
-  .doctor-role{font-size:11px;color:var(--gray-brown);letter-spacing:0.5px;font-weight:300;}
-  .doctor-plus{width:30px;height:30px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all 0.3s;}
+  .doctor-photo{height:240px;background:linear-gradient(165deg,#efe4d6 0%,#e0d0bb 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .doctor-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(31,26,22,0.1) 100%);}
+  .doctor-photo svg{position:relative;z-index:1;}
+  .doctor-info{padding:18px 16px 16px;flex:1;display:flex;flex-direction:column;}
+  .doctor-info-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex:1;}
+  .doctor-name{font-family:var(--serif);font-size:15px;font-weight:500;color:var(--brown);line-height:1.3;margin-bottom:5px;}
+  .doctor-role{font-size:10.5px;color:var(--gray-brown);letter-spacing:0.4px;font-weight:300;line-height:1.5;}
+  .doctor-card--nurse .doctor-role{font-style:italic;color:var(--gold);letter-spacing:0.6px;font-size:10px;}
+  .doctor-plus{width:28px;height:28px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all 0.3s;margin-top:2px;}
   .doctor-plus:hover{background:var(--gold);border-color:var(--gold);}
   .doctor-plus:hover svg{stroke:#fff;}
-  .doctor-plus svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2;}
+  .doctor-plus svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:2;}
 
   /* CASES */
   #cases{background:var(--ivory);}
@@ -231,6 +232,9 @@
     .footer-grid{grid-template-columns:1fr 1fr;}
   }
   @media(max-width:900px){
+    .doctors-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:900px){
     .container{padding:0 32px;}
     .header-inner{padding:0 32px;height:78px;}
     .logo-img{height:68px;max-width:45vw;}
@@ -253,7 +257,7 @@
     .brand-subtitle{font-size:7.5px;letter-spacing:2px;}
     .btn-header{padding:10px 18px;font-size:10px;letter-spacing:2px;}
     .services-grid{grid-template-columns:1fr;}
-    .doctors-grid{grid-template-columns:1fr 1fr;}
+    .doctors-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr;}
     .hero-title{font-size:52px;}
     section{padding:64px 0;}
@@ -521,94 +525,99 @@
     <h2 class="section-heading">Команда професіоналів</h2>
     <div class="doctors-grid">
 
+      <!-- Олійник Ігор Євгенійович — хірург-стоматолог, імплантолог, ортопед -->
       <div class="doctor-card">
         <div class="doctor-photo">
-          <svg viewBox="0 0 120 180" width="120" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
-            <circle cx="60" cy="60" r="35" stroke="#8A7D72" stroke-width="1" fill="#d4bfa8"/>
-            <path d="M10 170 C10 140 30 130 60 130 C90 130 110 140 110 170" stroke="#8A7D72" stroke-width="1" fill="#d4bfa8"/>
-            <rect x="45" y="75" width="30" height="50" rx="4" fill="#c8af98" stroke="#8A7D72" stroke-width="0.5"/>
+          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="65" r="38" fill="#d4bfa8" fill-opacity="0.65" stroke="#b09878" stroke-width="0.8"/>
+            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#7a6b5c" font-family="Georgia,serif" font-weight="500" letter-spacing="3">ОІ</text>
+            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#d4bfa8" fill-opacity="0.45" stroke="#b09878" stroke-width="0.8"/>
           </svg>
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
             <div>
-              <div class="doctor-name">Іван Петренко</div>
-              <div class="doctor-role">Хірург-імплантолог</div>
+              <div class="doctor-name">Олійник Ігор Євгенійович</div>
+              <div class="doctor-role">хірург-стоматолог, імплантолог, ортопед</div>
             </div>
             <div class="doctor-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
         </div>
       </div>
 
+      <!-- Рибін Олександр Володимирович — терапевт-ортопед -->
       <div class="doctor-card">
         <div class="doctor-photo" style="background:linear-gradient(165deg,#e8ddd0 0%,#d8ccbe 100%)">
-          <svg viewBox="0 0 120 180" width="120" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
-            <circle cx="60" cy="55" r="32" fill="#d4bfa8" stroke="#8A7D72" stroke-width="1"/>
-            <path d="M12 170 C12 138 32 128 60 128 C88 128 108 138 108 170" fill="#d4bfa8" stroke="#8A7D72" stroke-width="1"/>
-            <rect x="46" y="73" width="28" height="50" rx="4" fill="#c8b5a0" stroke="#8A7D72" stroke-width="0.5"/>
+          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="65" r="38" fill="#ccb89e" fill-opacity="0.65" stroke="#a89070" stroke-width="0.8"/>
+            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#7a6b5c" font-family="Georgia,serif" font-weight="500" letter-spacing="3">РО</text>
+            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#ccb89e" fill-opacity="0.45" stroke="#a89070" stroke-width="0.8"/>
           </svg>
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
             <div>
-              <div class="doctor-name">Ольга Ковальчук</div>
-              <div class="doctor-role">Терапевт-ендодонтист</div>
+              <div class="doctor-name">Рибін Олександр Володимирович</div>
+              <div class="doctor-role">терапевт-ортопед</div>
             </div>
             <div class="doctor-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
         </div>
       </div>
 
-      <div class="doctor-card">
-        <div class="doctor-photo" style="background:linear-gradient(165deg,#2a211a 0%,#3a2e22 100%)">
-          <svg viewBox="0 0 120 180" width="120" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.35">
-            <circle cx="60" cy="58" r="34" fill="#6a5a48" stroke="#8A7D72" stroke-width="1"/>
-            <path d="M10 172 C10 140 30 130 60 130 C90 130 110 140 110 172" fill="#6a5a48" stroke="#8A7D72" stroke-width="1"/>
+      <!-- Соколова Анастасія Сергіївна — медична сестра -->
+      <div class="doctor-card doctor-card--nurse">
+        <div class="doctor-photo" style="background:linear-gradient(165deg,#f0e8dc 0%,#e2d6c6 100%)">
+          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="65" r="38" fill="#ddd0bc" fill-opacity="0.65" stroke="#c0aba8" stroke-width="0.8"/>
+            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#8a7c70" font-family="Georgia,serif" font-weight="400" letter-spacing="3">СА</text>
+            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#ddd0bc" fill-opacity="0.45" stroke="#c0aba8" stroke-width="0.8"/>
           </svg>
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
             <div>
-              <div class="doctor-name">Максим Шевченко</div>
-              <div class="doctor-role">Ортодонт</div>
+              <div class="doctor-name">Соколова Анастасія Сергіївна</div>
+              <div class="doctor-role">медична сестра</div>
             </div>
-            <div class="doctor-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
         </div>
       </div>
 
-      <div class="doctor-card">
-        <div class="doctor-photo" style="background:linear-gradient(165deg,#ede0d0 0%,#ddd0bc 100%)">
-          <svg viewBox="0 0 120 180" width="120" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
-            <circle cx="60" cy="55" r="32" fill="#d4bfa8" stroke="#8A7D72" stroke-width="1"/>
-            <path d="M12 170 C12 138 32 128 60 128 C88 128 108 138 108 170" fill="#c8b5a0" stroke="#8A7D72" stroke-width="1"/>
+      <!-- Сідих Катерина Іванівна — медична сестра -->
+      <div class="doctor-card doctor-card--nurse">
+        <div class="doctor-photo" style="background:linear-gradient(165deg,#ede4d6 0%,#dfd2c2 100%)">
+          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="65" r="38" fill="#ddd0bc" fill-opacity="0.65" stroke="#c0aba8" stroke-width="0.8"/>
+            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#8a7c70" font-family="Georgia,serif" font-weight="400" letter-spacing="3">СК</text>
+            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#ddd0bc" fill-opacity="0.45" stroke="#c0aba8" stroke-width="0.8"/>
           </svg>
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
             <div>
-              <div class="doctor-name">Анастасія Левченко</div>
-              <div class="doctor-role">Асистент лікаря</div>
+              <div class="doctor-name">Сідих Катерина Іванівна</div>
+              <div class="doctor-role">медична сестра</div>
             </div>
-            <div class="doctor-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
         </div>
       </div>
 
-      <div class="doctor-card">
-        <div class="doctor-photo" style="background:linear-gradient(165deg,#e8ddd0 0%,#d8ccbe 100%)">
-          <svg viewBox="0 0 120 180" width="120" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
-            <circle cx="60" cy="55" r="32" fill="#d4bfa8" stroke="#8A7D72" stroke-width="1"/>
-            <path d="M12 170 C12 138 32 128 60 128 C88 128 108 138 108 170" fill="#c8b5a0" stroke="#8A7D72" stroke-width="1"/>
+      <!-- Левченко Ірина Михайлівна — медична сестра -->
+      <div class="doctor-card doctor-card--nurse">
+        <div class="doctor-photo" style="background:linear-gradient(165deg,#eae0d2 0%,#dcd0be 100%)">
+          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="65" r="38" fill="#ddd0bc" fill-opacity="0.65" stroke="#c0aba8" stroke-width="0.8"/>
+            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#8a7c70" font-family="Georgia,serif" font-weight="400" letter-spacing="3">ЛІ</text>
+            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#ddd0bc" fill-opacity="0.45" stroke="#c0aba8" stroke-width="0.8"/>
           </svg>
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
             <div>
-              <div class="doctor-name">Марія Гнатюк</div>
-              <div class="doctor-role">Гігієніст</div>
+              <div class="doctor-name">Левченко Ірина Михайлівна</div>
+              <div class="doctor-role">медична сестра</div>
             </div>
-            <div class="doctor-plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
         </div>
       </div>
