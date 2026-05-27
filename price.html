@@ -32,14 +32,15 @@
   .btn-header{background:transparent;border:1px solid #B08A4A;color:#2A1A12;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;padding:14px 28px;cursor:pointer;border-radius:1px;transition:background 0.3s,color 0.3s,border-color 0.3s;white-space:nowrap;flex-shrink:0;text-decoration:none;}
   .btn-header:hover{background:#B08A4A;color:#fff;border-color:#B08A4A;}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-  .brand-mark{height:64px;width:auto;display:block;}
-  .brand-copy{display:flex;flex-direction:column;gap:1px;}
-  .brand-name{font-family:'Jost',sans-serif;font-size:18px;font-weight:600;letter-spacing:4px;color:#2A1A12;text-transform:uppercase;line-height:1.15;}
+  .brand-mark{height:64px;width:auto;object-fit:contain;display:block;}
+  .brand-copy{display:flex;flex-direction:column;line-height:1.05;}
+  .brand-name{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:3px;font-weight:500;color:#3A2D24;text-transform:uppercase;margin-bottom:1px;}
   .brand-subtitle{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:2.5px;color:#7A6252;text-transform:uppercase;}
 
   /* PAGE HERO */
-  .price-hero{padding:160px 0 80px;background:var(--cream);border-bottom:1px solid rgba(196,154,85,0.15);}
-  .price-hero .container{max-width:1440px;margin:0 auto;padding:0 80px;text-align:center;}
+  .price-hero{padding:160px 0 100px;position:relative;background-image:url("images/фото для прайса.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;border-bottom:1px solid rgba(196,154,85,0.15);}
+  .price-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(251,247,241,0.93) 0%,rgba(239,228,214,0.88) 60%,rgba(196,154,85,0.12) 100%);z-index:0;}
+  .price-hero .container{max-width:1440px;margin:0 auto;padding:0 80px;text-align:center;position:relative;z-index:1;}
   .price-hero .section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:16px;}
   .price-hero h1{font-family:var(--serif);font-size:clamp(40px,5vw,68px);font-weight:500;color:var(--brown);line-height:1.1;margin-bottom:20px;}
   .price-hero-sub{font-size:15px;color:var(--gray-brown);font-weight:300;line-height:1.7;max-width:520px;margin:0 auto;}
@@ -50,9 +51,11 @@
   .price-nav::-webkit-scrollbar{height:2px;}
   .price-nav::-webkit-scrollbar-track{background:transparent;}
   .price-nav::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
-  .price-nav-inner{max-width:1440px;margin:0 auto;padding:0 80px;display:flex;gap:0;min-width:max-content;}
-  .price-nav-link{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-brown);text-decoration:none;padding:18px 24px;border-bottom:2px solid transparent;transition:color 0.3s,border-color 0.3s;white-space:nowrap;}
-  .price-nav-link:hover,.price-nav-link.active{color:var(--gold);border-bottom-color:var(--gold);}
+  .price-nav-inner{max-width:1440px;margin:0 auto;padding:0 80px;display:flex;align-items:center;gap:0;min-width:max-content;}
+  .price-nav-label{font-family:var(--sans);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-brown);font-weight:400;padding:14px 20px 14px 0;white-space:nowrap;flex-shrink:0;opacity:0.7;}
+  .price-nav-link{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-brown);text-decoration:none;padding:7px 15px;margin:0 3px;border:1px solid rgba(196,154,85,0.35);border-radius:20px;background:transparent;transition:color 0.25s,border-color 0.25s,background 0.25s;white-space:nowrap;}
+  .price-nav-link:hover{color:var(--gold);border-color:var(--gold);background:rgba(196,154,85,0.06);}
+  .price-nav-link.active{color:#fff;border-color:var(--gold);background:var(--gold);}
 
   /* PRICE SECTIONS */
   .price-section{padding:80px 0;border-bottom:1px solid rgba(196,154,85,0.1);}
@@ -74,7 +77,7 @@
   .price-item{display:flex;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(196,154,85,0.08);gap:12px;}
   .price-item:last-child{border-bottom:none;}
   .price-item:hover{background:rgba(196,154,85,0.03);margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:4px;}
-  .price-item-name{flex:1;font-size:14px;color:var(--brown);line-height:1.5;font-weight:300;}
+  .price-item-name{flex:1;font-size:14px;color:var(--brown);line-height:1.5;font-weight:300;overflow-wrap:break-word;word-break:break-word;min-width:0;}
   .price-item-dots{flex:1;border-bottom:1px dotted rgba(196,154,85,0.3);margin-bottom:4px;min-width:24px;max-width:120px;}
   .price-item-price{flex-shrink:0;font-size:14px;font-weight:500;color:var(--gold);text-align:right;white-space:nowrap;}
 
@@ -82,11 +85,10 @@
   footer{background:#15100B;padding:80px 0 0;border-top:1px solid rgba(196,154,85,0.35);}
   .footer-inner{max-width:1440px;margin:0 auto;padding:0 80px;}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid rgba(196,154,85,0.12);}
-  .footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:16px;}
-  .footer-brand-img{height:52px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.6;}
-  .footer-brand-copy{display:flex;flex-direction:column;gap:1px;}
-  .footer-brand-name{font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:3px;color:rgba(251,247,241,0.6);text-transform:uppercase;line-height:1.2;}
-  .footer-desc{font-size:13px;color:rgba(251,247,241,0.4);line-height:1.7;margin:16px 0 24px;font-weight:300;}
+  .footer-logo-wrap{margin-bottom:0;}
+  .logo{display:inline-flex;align-items:center;text-decoration:none;flex-shrink:0;margin-bottom:16px;}
+  .logo-img{height:52px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);opacity:0.6;}
+  .footer-desc{font-size:13px;color:rgba(251,247,241,0.4);line-height:1.7;margin:20px 0 24px;font-weight:300;}
   .footer-social{display:flex;gap:10px;}
   .footer-social-icon{width:36px;height:36px;border:1px solid rgba(196,154,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;}
   .footer-social-icon:hover{border-color:var(--gold);background:rgba(196,154,85,0.1);}
@@ -101,6 +103,12 @@
   .footer-bottom{padding:24px 0;display:flex;justify-content:center;}
   .footer-copy{font-size:11px;color:rgba(251,247,241,0.2);letter-spacing:1px;}
 
+  /* BACK TO TOP */
+  .back-to-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--brown-mid);border:1px solid rgba(196,154,85,0.45);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity 0.35s,transform 0.35s,background 0.25s,border-color 0.25s;z-index:200;}
+  .back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .back-to-top:hover{background:var(--gold);border-color:var(--gold);}
+  .back-to-top svg{width:18px;height:18px;stroke:#FBF7F1;fill:none;stroke-width:2;}
+
   /* RESPONSIVE */
   @media(max-width:1200px){
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -109,15 +117,19 @@
   @media(max-width:900px){
     .container{padding:0 32px;}
     .header-inner{padding:0 32px;height:78px;}
+    .brand-mark{height:56px;}
+    .brand-name{font-size:17px;}
+    .brand-subtitle{font-size:8.5px;}
     .price-hero{padding:140px 0 60px;}
     .price-hero .container{padding:0 32px;}
     .price-nav{top:78px;}
+    .price-nav-inner{padding:0 32px;}
     .footer-inner{padding:0 32px;}
     .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
   }
   @media(max-width:600px){
     .header-inner{padding:0 20px;height:74px;}
-    .brand-mark{height:52px;}
+    .brand-mark{height:48px;}
     .brand{gap:9px;}
     .brand-name{font-size:14px;letter-spacing:2.5px;}
     .brand-subtitle{font-size:7.5px;letter-spacing:2px;}
@@ -127,12 +139,15 @@
     .container{padding:0 20px;}
     .price-nav-inner{padding:0 20px;}
     .price-nav{top:74px;}
-    .price-nav-link{padding:14px 16px;font-size:10px;}
+    .price-nav-link{padding:6px 12px;font-size:9.5px;margin:0 2px;}
+    .price-nav-label{padding:12px 12px 12px 0;font-size:8.5px;}
     .price-section{padding:56px 0;}
     .price-item-dots{display:none;}
     .price-item-price{color:var(--gold);font-size:13px;}
+    .price-item:hover{margin:0;padding-left:0;padding-right:0;}
     .footer-grid{grid-template-columns:1fr;}
     .footer-inner{padding:0 20px;}
+    .back-to-top{bottom:20px;right:20px;width:40px;height:40px;}
   }
 </style>
 </head>
@@ -166,7 +181,9 @@
 
 <!-- PRICE NAV -->
 <nav class="price-nav" id="price-nav">
-  <div class="price-nav-inner" id="price-nav-inner"></div>
+  <div class="price-nav-inner" id="price-nav-inner">
+    <span class="price-nav-label">Оберіть категорію прайсу</span>
+  </div>
 </nav>
 
 <!-- PRICE CONTENT -->
@@ -177,13 +194,11 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <a href="index.html" class="footer-brand">
-          <img class="footer-brand-img" src="images/bella-dent-mark.png.png" alt="Bella Dent Clinic">
-          <div class="footer-brand-copy">
-            <div class="footer-brand-name">BELLA DENT</div>
-            <div class="footer-brand-name">CLINIC</div>
-          </div>
-        </a>
+        <div class="footer-logo-wrap">
+          <a href="index.html" class="logo">
+            <img class="logo-img" src="images/bella-dent-mark.png.png" alt="Bella Dent Clinic">
+          </a>
+        </div>
         <p class="footer-desc">Сучасна стоматологія, якій довіряють.</p>
         <div class="footer-social">
           <div class="footer-social-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#C49A55" stroke="none"/></svg></div>
@@ -216,16 +231,32 @@
   </div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="back-to-top" aria-label="Вгору">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script src="prices.js"></script>
 <script>
 (function() {
   var siteHeader = document.getElementById('site-header');
+  var backToTop = document.getElementById('back-to-top');
+
   window.addEventListener('scroll', function() {
     if (window.scrollY > 30) {
       siteHeader.classList.add('scrolled');
     } else {
       siteHeader.classList.remove('scrolled');
     }
+    if (window.scrollY > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }, {passive:true});
+
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({top:0, behavior:'smooth'});
   });
 
   function getItems(cat) {
