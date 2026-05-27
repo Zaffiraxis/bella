@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Прайс клініки — Bella Dent Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --ivory:#FBF7F1;
+    --cream:#F4EDE3;
+    --beige:#EFE4D6;
+    --gold:#C49A55;
+    --gold-light:#D0A96A;
+    --gold-dark:#B88A44;
+    --brown:#1F1A16;
+    --brown-mid:#3A2D24;
+    --gray-brown:#6F6258;
+    --footer-bg:#15100B;
+    --radius:12px;
+    --serif:'Cormorant Garamond',serif;
+    --sans:'Jost',sans-serif;
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--ivory);color:var(--brown);overflow-x:hidden;}
+
+  /* HEADER */
+  header{position:fixed;top:0;left:0;width:100%;z-index:100;background:#F6EFE6;border-bottom:1px solid rgba(176,138,74,0.22);transition:box-shadow 0.35s,background 0.35s;}
+  header.scrolled{box-shadow:0 4px 28px rgba(42,26,18,0.10);background:#F3EBE0;}
+  .header-inner{max-width:1440px;margin:0 auto;padding:0 64px;height:84px;display:flex;align-items:center;justify-content:space-between;}
+  .btn-header{background:transparent;border:1px solid #B08A4A;color:#2A1A12;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;padding:14px 28px;cursor:pointer;border-radius:1px;transition:background 0.3s,color 0.3s,border-color 0.3s;white-space:nowrap;flex-shrink:0;text-decoration:none;}
+  .btn-header:hover{background:#B08A4A;color:#fff;border-color:#B08A4A;}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+  .brand-mark{height:64px;width:auto;display:block;}
+  .brand-copy{display:flex;flex-direction:column;gap:1px;}
+  .brand-name{font-family:'Jost',sans-serif;font-size:18px;font-weight:600;letter-spacing:4px;color:#2A1A12;text-transform:uppercase;line-height:1.15;}
+  .brand-subtitle{font-family:'Jost',sans-serif;font-size:9.5px;letter-spacing:2.5px;color:#7A6252;text-transform:uppercase;}
+
+  /* PAGE HERO */
+  .price-hero{padding:160px 0 80px;background:var(--cream);border-bottom:1px solid rgba(196,154,85,0.15);}
+  .price-hero .container{max-width:1440px;margin:0 auto;padding:0 80px;text-align:center;}
+  .price-hero .section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:16px;}
+  .price-hero h1{font-family:var(--serif);font-size:clamp(40px,5vw,68px);font-weight:500;color:var(--brown);line-height:1.1;margin-bottom:20px;}
+  .price-hero-sub{font-size:15px;color:var(--gray-brown);font-weight:300;line-height:1.7;max-width:520px;margin:0 auto;}
+  .gold-divider{width:60px;height:1px;background:var(--gold);margin:24px auto 0;}
+
+  /* PRICE NAV */
+  .price-nav{background:#fff;border-bottom:1px solid rgba(196,154,85,0.15);position:sticky;top:84px;z-index:90;overflow-x:auto;}
+  .price-nav::-webkit-scrollbar{height:2px;}
+  .price-nav::-webkit-scrollbar-track{background:transparent;}
+  .price-nav::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+  .price-nav-inner{max-width:1440px;margin:0 auto;padding:0 80px;display:flex;gap:0;min-width:max-content;}
+  .price-nav-link{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-brown);text-decoration:none;padding:18px 24px;border-bottom:2px solid transparent;transition:color 0.3s,border-color 0.3s;white-space:nowrap;}
+  .price-nav-link:hover,.price-nav-link.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+  /* PRICE SECTIONS */
+  .price-section{padding:80px 0;border-bottom:1px solid rgba(196,154,85,0.1);}
+  .price-section:last-child{border-bottom:none;}
+  .price-section:nth-child(even){background:var(--cream);}
+  .container{max-width:1440px;margin:0 auto;padding:0 80px;}
+  .section-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:12px;}
+
+  /* CATEGORY HEADER */
+  .price-cat-header{margin-bottom:48px;}
+  .price-cat-title{font-family:var(--serif);font-size:clamp(32px,3.5vw,48px);font-weight:500;color:var(--brown);line-height:1.15;margin-bottom:12px;}
+  .price-cat-desc{font-size:14px;color:var(--gray-brown);font-weight:300;line-height:1.7;}
+  .price-cat-divider{width:50px;height:1px;background:var(--gold);margin:20px 0;}
+
+  /* PRICE LIST */
+  .price-list{width:100%;}
+  .price-group-title{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--brown);padding:28px 0 16px;margin-top:8px;border-bottom:1px solid rgba(196,154,85,0.3);letter-spacing:0.3px;}
+  .price-group-title:first-child{padding-top:0;}
+  .price-item{display:flex;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(196,154,85,0.08);gap:12px;}
+  .price-item:last-child{border-bottom:none;}
+  .price-item:hover{background:rgba(196,154,85,0.03);margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:4px;}
+  .price-item-name{flex:1;font-size:14px;color:var(--brown);line-height:1.5;font-weight:300;}
+  .price-item-dots{flex:1;border-bottom:1px dotted rgba(196,154,85,0.3);margin-bottom:4px;min-width:24px;max-width:120px;}
+  .price-item-price{flex-shrink:0;font-size:14px;font-weight:500;color:var(--gold);text-align:right;white-space:nowrap;}
+
+  /* FOOTER */
+  footer{background:#15100B;padding:80px 0 0;border-top:1px solid rgba(196,154,85,0.35);}
+  .footer-inner{max-width:1440px;margin:0 auto;padding:0 80px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid rgba(196,154,85,0.12);}
+  .footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:16px;}
+  .footer-brand-img{height:52px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.6;}
+  .footer-brand-copy{display:flex;flex-direction:column;gap:1px;}
+  .footer-brand-name{font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:3px;color:rgba(251,247,241,0.6);text-transform:uppercase;line-height:1.2;}
+  .footer-desc{font-size:13px;color:rgba(251,247,241,0.4);line-height:1.7;margin:16px 0 24px;font-weight:300;}
+  .footer-social{display:flex;gap:10px;}
+  .footer-social-icon{width:36px;height:36px;border:1px solid rgba(196,154,85,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;}
+  .footer-social-icon:hover{border-color:var(--gold);background:rgba(196,154,85,0.1);}
+  .footer-social-icon svg{width:15px;height:15px;stroke:rgba(196,154,85,0.7);fill:none;stroke-width:1.5;}
+  .footer-col-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:20px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-links a{text-decoration:none;font-size:13px;color:rgba(251,247,241,0.45);transition:color 0.3s;font-weight:300;}
+  .footer-links a:hover{color:rgba(251,247,241,0.8);}
+  .footer-cta-text{font-size:13px;color:rgba(251,247,241,0.4);line-height:1.7;margin-bottom:24px;font-weight:300;}
+  .footer-cta-btn{display:block;border:1px solid rgba(196,154,85,0.6);color:var(--gold);font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:14px 24px;text-align:center;cursor:pointer;transition:all 0.3s;text-decoration:none;}
+  .footer-cta-btn:hover{background:var(--gold);color:var(--brown);}
+  .footer-bottom{padding:24px 0;display:flex;justify-content:center;}
+  .footer-copy{font-size:11px;color:rgba(251,247,241,0.2);letter-spacing:1px;}
+
+  /* RESPONSIVE */
+  @media(max-width:1200px){
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .price-nav-inner{padding:0 32px;}
+  }
+  @media(max-width:900px){
+    .container{padding:0 32px;}
+    .header-inner{padding:0 32px;height:78px;}
+    .price-hero{padding:140px 0 60px;}
+    .price-hero .container{padding:0 32px;}
+    .price-nav{top:78px;}
+    .footer-inner{padding:0 32px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  }
+  @media(max-width:600px){
+    .header-inner{padding:0 20px;height:74px;}
+    .brand-mark{height:52px;}
+    .brand{gap:9px;}
+    .brand-name{font-size:14px;letter-spacing:2.5px;}
+    .brand-subtitle{font-size:7.5px;letter-spacing:2px;}
+    .btn-header{padding:10px 18px;font-size:10px;letter-spacing:2px;}
+    .price-hero{padding:120px 0 48px;}
+    .price-hero .container{padding:0 20px;}
+    .container{padding:0 20px;}
+    .price-nav-inner{padding:0 20px;}
+    .price-nav{top:74px;}
+    .price-nav-link{padding:14px 16px;font-size:10px;}
+    .price-section{padding:56px 0;}
+    .price-item-dots{display:none;}
+    .price-item-price{color:var(--gold);font-size:13px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-inner{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="images/bella-dent-mark.png.png" alt="Bella Dent Clinic">
+      <div class="brand-copy">
+        <div class="brand-name">BELLA DENT</div>
+        <div class="brand-name">CLINIC</div>
+        <div class="brand-subtitle">ЦЕНТР СУЧАСНОЇ</div>
+        <div class="brand-subtitle">СТОМАТОЛОГІЇ</div>
+      </div>
+    </a>
+    <a href="index.html#contacts" class="btn-header">ЗАПИСАТИСЯ</a>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="price-hero">
+  <div class="container">
+    <span class="section-label">BELLA DENT CLINIC</span>
+    <h1>Прайс клініки</h1>
+    <p class="price-hero-sub">Прозорі ціни на всі послуги. Оберіть категорію або прокрутіть нижче для перегляду повного прайсу.</p>
+    <div class="gold-divider"></div>
+  </div>
+</div>
+
+<!-- PRICE NAV -->
+<nav class="price-nav" id="price-nav">
+  <div class="price-nav-inner" id="price-nav-inner"></div>
+</nav>
+
+<!-- PRICE CONTENT -->
+<main id="price-main"></main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="footer-brand">
+          <img class="footer-brand-img" src="images/bella-dent-mark.png.png" alt="Bella Dent Clinic">
+          <div class="footer-brand-copy">
+            <div class="footer-brand-name">BELLA DENT</div>
+            <div class="footer-brand-name">CLINIC</div>
+          </div>
+        </a>
+        <p class="footer-desc">Сучасна стоматологія, якій довіряють.</p>
+        <div class="footer-social">
+          <div class="footer-social-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#C49A55" stroke="none"/></svg></div>
+          <div class="footer-social-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+          <div class="footer-social-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">НАВІГАЦІЯ</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="index.html#about">Про нас</a></li>
+          <li><a href="index.html#doctors">Лікарі</a></li>
+          <li><a href="price.html">Прайс</a></li>
+          <li><a href="index.html#contacts">Контакти</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">ПОСЛУГИ</div>
+        <ul class="footer-links" id="footer-services-links"></ul>
+      </div>
+      <div>
+        <p class="footer-cta-text">Запишіться на консультацію та отримайте турботу, яку ви заслуговуєте.</p>
+        <a href="index.html#contacts" class="footer-cta-btn">ЗАПИСАТИСЯ НА ПРИЙОМ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2024 Bella Dent Clinic. Усі права захищені.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="prices.js"></script>
+<script>
+(function() {
+  var siteHeader = document.getElementById('site-header');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 30) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  });
+
+  function getItems(cat) {
+    if (cat.items) return cat.items;
+    var all = [];
+    cat.groups.forEach(function(g) { all = all.concat(g.items); });
+    return all;
+  }
+
+  function renderNav() {
+    var nav = document.getElementById('price-nav-inner');
+    priceData.forEach(function(cat) {
+      var a = document.createElement('a');
+      a.className = 'price-nav-link';
+      a.href = '#' + cat.slug;
+      a.textContent = cat.title;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.getElementById(cat.slug);
+        if (target) {
+          var navH = document.getElementById('price-nav').offsetHeight;
+          var headerH = document.getElementById('site-header').offsetHeight;
+          var top = target.getBoundingClientRect().top + window.scrollY - headerH - navH - 16;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+      nav.appendChild(a);
+    });
+  }
+
+  function renderFooterLinks() {
+    var list = document.getElementById('footer-services-links');
+    if (!list) return;
+    priceData.forEach(function(cat) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + cat.slug;
+      a.textContent = cat.title;
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  }
+
+  function renderPriceList(cat) {
+    var div = document.createElement('div');
+    div.className = 'price-list';
+
+    if (cat.groups) {
+      cat.groups.forEach(function(group) {
+        var groupTitle = document.createElement('div');
+        groupTitle.className = 'price-group-title';
+        groupTitle.textContent = group.subtitle;
+        div.appendChild(groupTitle);
+        group.items.forEach(function(item) {
+          div.appendChild(makeItem(item));
+        });
+      });
+    } else {
+      cat.items.forEach(function(item) {
+        div.appendChild(makeItem(item));
+      });
+    }
+    return div;
+  }
+
+  function makeItem(item) {
+    var row = document.createElement('div');
+    row.className = 'price-item';
+    var name = document.createElement('span');
+    name.className = 'price-item-name';
+    name.textContent = item.name;
+    var dots = document.createElement('span');
+    dots.className = 'price-item-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    var price = document.createElement('span');
+    price.className = 'price-item-price';
+    price.textContent = item.price || 'уточнюйте';
+    row.appendChild(name);
+    row.appendChild(dots);
+    row.appendChild(price);
+    return row;
+  }
+
+  function renderSections() {
+    var main = document.getElementById('price-main');
+    priceData.forEach(function(cat, i) {
+      var section = document.createElement('section');
+      section.className = 'price-section';
+      section.id = cat.slug;
+
+      var container = document.createElement('div');
+      container.className = 'container';
+
+      var header = document.createElement('div');
+      header.className = 'price-cat-header';
+
+      var label = document.createElement('span');
+      label.className = 'section-label';
+      label.textContent = 'BELLA DENT CLINIC';
+
+      var title = document.createElement('h2');
+      title.className = 'price-cat-title';
+      title.textContent = cat.title;
+
+      var divider = document.createElement('div');
+      divider.className = 'price-cat-divider';
+
+      var desc = document.createElement('p');
+      desc.className = 'price-cat-desc';
+      desc.textContent = cat.desc;
+
+      header.appendChild(label);
+      header.appendChild(title);
+      header.appendChild(divider);
+      header.appendChild(desc);
+
+      container.appendChild(header);
+      container.appendChild(renderPriceList(cat));
+      section.appendChild(container);
+      main.appendChild(section);
+    });
+  }
+
+  function updateActiveNav() {
+    var navLinks = document.querySelectorAll('.price-nav-link');
+    var sections = [];
+    priceData.forEach(function(cat) {
+      var el = document.getElementById(cat.slug);
+      if (el) sections.push({ slug: cat.slug, el: el });
+    });
+    var headerH = document.getElementById('site-header').offsetHeight;
+    var navH = document.getElementById('price-nav').offsetHeight;
+    var offset = headerH + navH + 32;
+    var current = null;
+    sections.forEach(function(s) {
+      if (s.el.getBoundingClientRect().top <= offset) current = s.slug;
+    });
+    navLinks.forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+
+  function scrollToHash() {
+    var hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    setTimeout(function() {
+      var target = document.getElementById(hash);
+      if (!target) return;
+      var headerH = document.getElementById('site-header').offsetHeight;
+      var navH = document.getElementById('price-nav').offsetHeight;
+      var top = target.getBoundingClientRect().top + window.scrollY - headerH - navH - 16;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }, 120);
+  }
+
+  renderNav();
+  renderFooterLinks();
+  renderSections();
+  scrollToHash();
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+})();
+</script>
+</body>
+</html>
