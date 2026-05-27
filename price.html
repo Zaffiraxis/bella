@@ -338,7 +338,7 @@
 </footer>
 
 <!-- BACK TO TOP -->
-<button class="back-to-top" id="back-to-top" aria-label="До категорій прайсу" title="До категорій прайсу">
+<button class="back-to-top" id="back-to-top" aria-label="На початок сторінки" title="На початок сторінки">
   <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
@@ -358,15 +358,9 @@
     backToTop.classList.toggle('visible', window.scrollY > 300);
   }, {passive: true});
 
-  /* back-to-top scrolls to category nav */
+  /* back-to-top: always scroll to the very top of the page */
   backToTop.addEventListener('click', function() {
-    var nav = document.getElementById('price-nav');
-    if (nav) {
-      var top = nav.offsetTop - siteHeader.offsetHeight;
-      window.scrollTo({top: Math.max(0, top), behavior: 'smooth'});
-    } else {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+    window.scrollTo({top: 0, behavior: 'smooth'});
   });
 
   /* hamburger menu */
