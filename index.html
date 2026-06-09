@@ -121,10 +121,10 @@
   .doctors-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
   .doctor-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);transition:all 0.3s;display:flex;flex-direction:column;}
   .doctor-card:hover{transform:translateY(-4px);box-shadow:0 10px 40px rgba(31,26,22,0.13);}
-  .doctor-photo{height:240px;background:linear-gradient(165deg,#efe4d6 0%,#e0d0bb 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .doctor-photo{height:320px;background:linear-gradient(165deg,#efe4d6 0%,#e0d0bb 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .doctor-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(31,26,22,0.1) 100%);}
   .doctor-photo svg{position:relative;z-index:1;}
-  .doctor-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;}
+  .doctor-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;position:absolute;inset:0;z-index:1;}
   .doctor-info{padding:18px 16px 16px;flex:1;display:flex;flex-direction:column;}
   .doctor-info-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex:1;}
   .doctor-name{font-family:var(--serif);font-size:15px;font-weight:500;color:var(--brown);line-height:1.3;margin-bottom:5px;}
@@ -139,7 +139,7 @@
   #cases{background:var(--ivory);}
   .cases-slider-viewport{overflow:hidden;border-radius:var(--radius);}
   .cases-track{display:flex;gap:24px;will-change:transform;align-items:stretch;}
-  .case-slide{flex-shrink:0;background:var(--cream);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);display:flex;align-items:center;justify-content:center;}
+  .case-slide{flex-shrink:0;background:#1a1410;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);display:flex;align-items:center;justify-content:center;}
   .case-slide img{width:100%;height:100%;object-fit:contain;display:block;}
   .cases-nav{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:40px;}
   .cases-arrow{width:44px;height:44px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;transition:all 0.3s;}
@@ -205,7 +205,7 @@
   .footer-top{display:flex;gap:44px;padding-bottom:26px;border-bottom:1px solid rgba(196,154,85,.1);align-items:flex-start;}
   .footer-brand-block{flex:0 0 230px;}
   .footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px;}
-  .footer-brand-mark{height:34px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;}
+  .footer-brand-mark{height:56px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.8;}
   .footer-brand-copy{display:flex;flex-direction:column;line-height:1.1;}
   .footer-brand-name{font-family:var(--serif);font-size:14px;letter-spacing:2.5px;font-weight:500;color:rgba(251,247,241,.85);text-transform:uppercase;}
   .footer-brand-tagline{font-family:var(--sans);font-size:7.5px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-top:3px;}
@@ -722,7 +722,7 @@
           </div>
           <div>
             <div class="contact-label">Адреса</div>
-            <div class="contact-value">м. Кривий Ріг, Покровський район, зуп. Військового Тилу, вул. Федора Карамани, 43/3А</div>
+            <div class="contact-value">м. Кривий Ріг, вулиця Ватутіна, 43/3А</div>
             <div class="contact-value-note">Окрема одноповерхова будівля</div>
           </div>
         </div>
@@ -767,7 +767,7 @@
   <div class="map-container">
     <iframe
       class="map-iframe"
-      src="https://www.google.com/maps?q=вул.+Саксаганського,+123,+Київ,+Україна&output=embed&z=16"
+      src="https://www.google.com/maps?q=вул.+Ватутіна,+43/3А,+Кривий+Ріг,+Дніпропетровська+область,+Україна&output=embed&z=16"
       loading="lazy"
       allowfullscreen
       referrerpolicy="no-referrer-when-downgrade"
@@ -782,7 +782,7 @@
     <div class="footer-top">
       <div class="footer-brand-block">
         <a href="#home" class="footer-brand">
-          <img class="footer-brand-mark" src="images/bella-dent-mark.png.jpg" alt="Bella Dent Clinic">
+          <img class="footer-brand-mark" src="bella-dent-logo.png.png" alt="Bella Dent Clinic">
           <div class="footer-brand-copy">
             <div class="footer-brand-name">BELLA DENT</div>
             <div class="footer-brand-name">CLINIC</div>
@@ -1223,7 +1223,7 @@ document.querySelectorAll('button').forEach(b => {
   if (!track) return;
 
   var GAP = 0;
-  var SLIDE_H = 420;
+  var SLIDE_H = 300;
   var n = caseImages.length;
   var current = 0;
   var timer = null;
