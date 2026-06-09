@@ -124,6 +124,7 @@
   .doctor-photo{height:240px;background:linear-gradient(165deg,#efe4d6 0%,#e0d0bb 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .doctor-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(31,26,22,0.1) 100%);}
   .doctor-photo svg{position:relative;z-index:1;}
+  .doctor-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;}
   .doctor-info{padding:18px 16px 16px;flex:1;display:flex;flex-direction:column;}
   .doctor-info-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex:1;}
   .doctor-name{font-family:var(--serif);font-size:15px;font-weight:500;color:var(--brown);line-height:1.3;margin-bottom:5px;}
@@ -136,18 +137,10 @@
 
   /* CASES */
   #cases{background:var(--ivory);}
-  .cases-wrapper{position:relative;}
-  .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .case-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);}
-  .case-images{display:grid;grid-template-columns:1fr 1fr;height:200px;position:relative;}
-  .case-img{position:relative;overflow:hidden;}
-  .case-img-before{background:linear-gradient(135deg,#c8b5a0 0%,#b09880 100%);}
-  .case-img-after{background:linear-gradient(135deg,#e8ddd0 0%,#d4c4b0 100%);}
-  .case-label{position:absolute;top:12px;left:12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:rgba(31,26,22,0.6);color:#fff;padding:4px 8px;font-weight:500;}
-  .case-info{padding:22px;}
-  .case-title{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--brown);margin-bottom:6px;}
-  .case-desc{font-size:13px;color:var(--gray-brown);margin-bottom:12px;font-weight:300;line-height:1.6;}
-  .case-doctor{font-size:11px;color:var(--gold);letter-spacing:1px;}
+  .cases-slider-viewport{overflow:hidden;}
+  .cases-track{display:flex;gap:20px;will-change:transform;}
+  .case-slide{flex-shrink:0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);}
+  .case-slide img{width:100%;height:100%;object-fit:cover;display:block;}
   .cases-nav{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:40px;}
   .cases-arrow{width:44px;height:44px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;transition:all 0.3s;}
   .cases-arrow:hover{background:var(--gold);border-color:var(--gold);}
@@ -251,7 +244,6 @@
     .brand-subtitle{font-size:8.5px;}
     .btn-header{padding:13px 24px;font-size:10px;letter-spacing:2.5px;}
     .about-grid{grid-template-columns:1fr;gap:40px;}
-    .cases-grid{grid-template-columns:1fr;}
     .footer-inner{padding:0 32px;}
     .footer-top{gap:22px;}
     .footer-brand-block{flex:0 0 190px;}
@@ -522,12 +514,8 @@
 
       <!-- Рибін Олександр Володимирович — терапевт-ортопед -->
       <div class="doctor-card">
-        <div class="doctor-photo" style="background:linear-gradient(165deg,#e8ddd0 0%,#d8ccbe 100%)">
-          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="65" r="38" fill="#ccb89e" fill-opacity="0.65" stroke="#a89070" stroke-width="0.8"/>
-            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#7a6b5c" font-family="Georgia,serif" font-weight="500" letter-spacing="3">РО</text>
-            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#ccb89e" fill-opacity="0.45" stroke="#a89070" stroke-width="0.8"/>
-          </svg>
+        <div class="doctor-photo">
+          <img src="images/doctors/doctor-rybin.png" alt="Рибін Олександр Володимирович" loading="lazy">
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
@@ -542,12 +530,8 @@
 
       <!-- Соколова Анастасія Сергіївна — медична сестра -->
       <div class="doctor-card doctor-card--nurse">
-        <div class="doctor-photo" style="background:linear-gradient(165deg,#f0e8dc 0%,#e2d6c6 100%)">
-          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="65" r="38" fill="#ddd0bc" fill-opacity="0.65" stroke="#c0aba8" stroke-width="0.8"/>
-            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#8a7c70" font-family="Georgia,serif" font-weight="400" letter-spacing="3">СА</text>
-            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#ddd0bc" fill-opacity="0.45" stroke="#c0aba8" stroke-width="0.8"/>
-          </svg>
+        <div class="doctor-photo">
+          <img src="images/doctors/doctor-sokolova.png" alt="Соколова Анастасія Сергіївна" loading="lazy">
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
@@ -580,12 +564,8 @@
 
       <!-- Левченко Ірина Михайлівна — медична сестра -->
       <div class="doctor-card doctor-card--nurse">
-        <div class="doctor-photo" style="background:linear-gradient(165deg,#eae0d2 0%,#dcd0be 100%)">
-          <svg viewBox="0 0 120 200" width="110" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="65" r="38" fill="#ddd0bc" fill-opacity="0.65" stroke="#c0aba8" stroke-width="0.8"/>
-            <text x="60" y="75" text-anchor="middle" font-size="23" fill="#8a7c70" font-family="Georgia,serif" font-weight="400" letter-spacing="3">ЛІ</text>
-            <path d="M10 192 C10 158 30 144 60 144 C90 144 110 158 110 192" fill="#ddd0bc" fill-opacity="0.45" stroke="#c0aba8" stroke-width="0.8"/>
-          </svg>
+        <div class="doctor-photo">
+          <img src="images/doctors/doctor-levchenko.png" alt="Левченко Ірина Михайлівна" loading="lazy">
         </div>
         <div class="doctor-info">
           <div class="doctor-info-header">
@@ -606,94 +586,13 @@
   <div class="container">
     <span class="section-label">НАШІ КЕЙСИ</span>
     <h2 class="section-heading">Реальні результати наших пацієнтів</h2>
-    <div class="cases-grid">
-
-      <div class="case-card">
-        <div class="case-images">
-          <div class="case-img case-img-before">
-            <span class="case-label">ДО</span>
-            <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.5">
-              <ellipse cx="100" cy="120" rx="70" ry="30" fill="#b09880"/>
-              <ellipse cx="80" cy="105" rx="15" ry="20" fill="#c8b09a"/>
-              <ellipse cx="100" cy="102" rx="12" ry="20" fill="#c0a890"/>
-              <ellipse cx="120" cy="105" rx="14" ry="19" fill="#bda88a"/>
-            </svg>
-          </div>
-          <div class="case-img case-img-after">
-            <span class="case-label" style="left:auto;right:12px">ПІСЛЯ</span>
-            <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.5">
-              <ellipse cx="100" cy="120" rx="70" ry="30" fill="#d4c0a8"/>
-              <ellipse cx="80" cy="105" rx="15" ry="20" fill="#e8ddd0"/>
-              <ellipse cx="100" cy="102" rx="12" ry="20" fill="#f0e8dc"/>
-              <ellipse cx="120" cy="105" rx="14" ry="19" fill="#ece0d0"/>
-            </svg>
-          </div>
-        </div>
-        <div class="case-info">
-          <div class="case-title">Вініри E-max</div>
-          <p class="case-desc">Відновлення форми та кольору зубів</p>
-          <div class="case-doctor">Лікар: Іван Петренко</div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-images">
-          <div class="case-img case-img-before">
-            <span class="case-label">ДО</span>
-            <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
-              <ellipse cx="100" cy="115" rx="65" ry="28" fill="#9a8070"/>
-              <rect x="50" y="90" width="100" height="40" rx="4" fill="#b09880" opacity="0.6"/>
-            </svg>
-          </div>
-          <div class="case-img case-img-after">
-            <span class="case-label" style="left:auto;right:12px">ПІСЛЯ</span>
-            <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.4">
-              <ellipse cx="100" cy="115" rx="65" ry="28" fill="#cbbca8"/>
-              <rect x="50" y="90" width="100" height="40" rx="4" fill="#e8ddd0" opacity="0.8"/>
-            </svg>
-          </div>
-        </div>
-        <div class="case-info">
-          <div class="case-title">Імплантація All-on-4</div>
-          <p class="case-desc">Повне відновлення зубного ряду</p>
-          <div class="case-doctor">Лікар: Іван Петренко</div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <div class="case-images">
-          <div class="case-img case-img-before">
-            <span class="case-label">ДО</span>
-            <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.45">
-              <ellipse cx="100" cy="120" rx="68" ry="28" fill="#b09880"/>
-              <path d="M48 105 Q100 88 152 105" stroke="#9a8070" stroke-width="2" fill="none"/>
-            </svg>
-          </div>
-          <div class="case-img case-img-after">
-            <span class="case-label" style="left:auto;right:12px">ПІСЛЯ</span>
-            <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.45">
-              <ellipse cx="100" cy="120" rx="68" ry="28" fill="#d4c4b0"/>
-              <path d="M48 108 Q100 95 152 108" stroke="#bba898" stroke-width="2" fill="none"/>
-            </svg>
-          </div>
-        </div>
-        <div class="case-info">
-          <div class="case-title">Ортодонтичне лікування</div>
-          <p class="case-desc">Вирівнювання зубів брекет-системою</p>
-          <div class="case-doctor">Лікар: Максим Шевченко</div>
-        </div>
-      </div>
-
+    <div class="cases-slider-viewport" id="casesViewport">
+      <div class="cases-track" id="casesTrack"></div>
     </div>
     <div class="cases-nav">
-      <button class="cases-arrow"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <div class="cases-dots">
-        <div class="cases-dot active"></div>
-        <div class="cases-dot"></div>
-        <div class="cases-dot"></div>
-        <div class="cases-dot"></div>
-      </div>
-      <button class="cases-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      <button class="cases-arrow" id="casesPrev" aria-label="Попередній"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="cases-dots" id="casesDots"></div>
+      <button class="cases-arrow" id="casesNext" aria-label="Наступний"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </div>
 </section>
@@ -1288,6 +1187,174 @@ document.querySelectorAll('button').forEach(b => {
   nextBtn.addEventListener('click', function() { stopTimer(); step(1);  startTimer(); });
 
   // Touch / swipe
+  var tx = 0, ty = 0;
+  viewport.addEventListener('touchstart', function(e) {
+    tx = e.touches[0].clientX;
+    ty = e.touches[0].clientY;
+    stopTimer();
+  }, { passive: true });
+  viewport.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      dx < 0 ? step(1) : step(-1);
+    }
+    startTimer();
+  }, { passive: true });
+
+  viewport.addEventListener('mouseenter', stopTimer);
+  viewport.addEventListener('mouseleave', startTimer);
+
+  var resizeT;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(buildTrack, 150);
+  });
+
+  buildTrack();
+  startTimer();
+})();
+
+// === CASES SLIDER ===
+(function() {
+  var caseImages = [
+    './images/cases/photo_2026-06-09_11-23-00.jpg',
+    './images/cases/photo_2026-06-09_11-23-02.jpg',
+    './images/cases/photo_2026-06-09_11-23-04.jpg',
+    './images/cases/photo_2026-06-09_11-23-05.jpg',
+    './images/cases/photo_2026-06-09_11-23-09.jpg',
+    './images/cases/photo_2026-06-09_11-23-10.jpg',
+    './images/cases/photo_2026-06-09_11-23-17.jpg',
+    './images/cases/photo_2026-06-09_11-23-18.jpg',
+    './images/cases/photo_2026-06-09_11-23-19.jpg'
+  ];
+
+  var track    = document.getElementById('casesTrack');
+  var viewport = document.getElementById('casesViewport');
+  var dotsWrap = document.getElementById('casesDots');
+  var prevBtn  = document.getElementById('casesPrev');
+  var nextBtn  = document.getElementById('casesNext');
+  if (!track) return;
+
+  var GAP = 20;
+  var SLIDE_H = 340;
+  var n = caseImages.length;
+  var current = 0;
+  var timer = null;
+  var busy = false;
+
+  function getVis() {
+    var w = window.innerWidth;
+    return w <= 640 ? 1 : w <= 1024 ? 2 : 3;
+  }
+
+  function getCardW(vis) {
+    return (viewport.offsetWidth - GAP * (vis - 1)) / vis;
+  }
+
+  function makeSlide(src) {
+    var slide = document.createElement('div');
+    slide.className = 'case-slide';
+    slide.setAttribute('aria-hidden', 'true');
+    var img = document.createElement('img');
+    img.setAttribute('loading', 'lazy');
+    img.setAttribute('decoding', 'async');
+    img.setAttribute('alt', 'Кейс');
+    img.src = src;
+    slide.appendChild(img);
+    return slide;
+  }
+
+  function rebuildSizes() {
+    var vis = getVis();
+    var cw = getCardW(vis);
+    var all = track.querySelectorAll('.case-slide');
+    all.forEach(function(s) {
+      s.style.width = cw + 'px';
+      s.style.height = SLIDE_H + 'px';
+    });
+    track.style.gap = GAP + 'px';
+  }
+
+  function applyOffset(idx, animate) {
+    var vis = getVis();
+    var cw = getCardW(vis);
+    var off = (vis + idx) * (cw + GAP);
+    track.style.transition = animate ? 'transform .5s cubic-bezier(.25,.46,.45,.94)' : 'none';
+    track.style.transform = 'translateX(-' + off + 'px)';
+  }
+
+  function buildTrack() {
+    var vis = getVis();
+    track.innerHTML = '';
+    for (var i = n - vis; i < n; i++) { track.appendChild(makeSlide(caseImages[i])); }
+    for (var i = 0; i < n; i++) { track.appendChild(makeSlide(caseImages[i])); }
+    for (var i = 0; i < vis; i++) { track.appendChild(makeSlide(caseImages[i])); }
+    rebuildSizes();
+    applyOffset(current, false);
+    buildDots();
+  }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    for (var i = 0; i < n; i++) {
+      (function(idx) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cases-dot' + (idx === current ? ' active' : '');
+        btn.setAttribute('aria-label', 'Кейс ' + (idx + 1));
+        btn.addEventListener('click', function() {
+          if (busy) return;
+          stopTimer();
+          goTo(idx);
+          startTimer();
+        });
+        dotsWrap.appendChild(btn);
+      })(i);
+    }
+  }
+
+  function updateDots() {
+    dotsWrap.querySelectorAll('.cases-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(idx) {
+    if (busy) return;
+    busy = true;
+    current = ((idx % n) + n) % n;
+    applyOffset(current, true);
+    updateDots();
+    setTimeout(function() { busy = false; }, 520);
+  }
+
+  function step(dir) {
+    if (busy) return;
+    busy = true;
+    var vis = getVis();
+    var cw = getCardW(vis);
+    var trackIdx = vis + current + dir;
+    var off = trackIdx * (cw + GAP);
+    track.style.transition = 'transform .5s cubic-bezier(.25,.46,.45,.94)';
+    track.style.transform = 'translateX(-' + off + 'px)';
+    current = ((current + dir) % n + n) % n;
+    updateDots();
+    setTimeout(function() {
+      applyOffset(current, false);
+      setTimeout(function() { busy = false; }, 30);
+    }, 520);
+  }
+
+  function startTimer() {
+    stopTimer();
+    timer = setInterval(function() { step(1); }, 4000);
+  }
+  function stopTimer() { clearInterval(timer); timer = null; }
+
+  prevBtn.addEventListener('click', function() { stopTimer(); step(-1); startTimer(); });
+  nextBtn.addEventListener('click', function() { stopTimer(); step(1);  startTimer(); });
+
   var tx = 0, ty = 0;
   viewport.addEventListener('touchstart', function(e) {
     tx = e.touches[0].clientX;
