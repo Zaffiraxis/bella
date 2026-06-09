@@ -137,10 +137,10 @@
 
   /* CASES */
   #cases{background:var(--ivory);}
-  .cases-slider-viewport{overflow:hidden;}
-  .cases-track{display:flex;gap:20px;will-change:transform;}
-  .case-slide{flex-shrink:0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);}
-  .case-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+  .cases-slider-viewport{overflow:hidden;border-radius:var(--radius);}
+  .cases-track{display:flex;gap:24px;will-change:transform;align-items:stretch;}
+  .case-slide{flex-shrink:0;background:var(--cream);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 20px rgba(31,26,22,0.07);display:flex;align-items:center;justify-content:center;}
+  .case-slide img{width:100%;height:100%;object-fit:contain;display:block;}
   .cases-nav{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:40px;}
   .cases-arrow{width:44px;height:44px;border:1px solid rgba(196,154,85,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;transition:all 0.3s;}
   .cases-arrow:hover{background:var(--gold);border-color:var(--gold);}
@@ -1236,20 +1236,17 @@ document.querySelectorAll('button').forEach(b => {
   var nextBtn  = document.getElementById('casesNext');
   if (!track) return;
 
-  var GAP = 20;
-  var SLIDE_H = 340;
+  var GAP = 0;
+  var SLIDE_H = 420;
   var n = caseImages.length;
   var current = 0;
   var timer = null;
   var busy = false;
 
-  function getVis() {
-    var w = window.innerWidth;
-    return w <= 640 ? 1 : w <= 1024 ? 2 : 3;
-  }
+  function getVis() { return 1; }
 
   function getCardW(vis) {
-    return (viewport.offsetWidth - GAP * (vis - 1)) / vis;
+    return viewport.offsetWidth;
   }
 
   function makeSlide(src) {
